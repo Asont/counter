@@ -1,0 +1,110 @@
+body {
+    background-color: #2a2d35;
+}
+
+.App {
+    display: flex;
+    flex-direction: initial;
+    align-content: flex-start;
+
+}
+
+.CounterBlok  {
+    width: 20%;
+    height: 20%;
+    text-align: center;
+    border: 2px solid #6ee4fe;
+    border-radius: 10px;
+    display: flow-root;
+    align-self: center;
+    margin: 15% 7% 10% 23%;
+}
+
+.UtilitiesBlok  {
+    width: 20%;
+    height: 20%;
+    text-align: center;
+    border: 2px solid #6ee4fe;
+    border-radius: 10px;
+    display: flow-root;
+    align-self: center;
+    margin:15% 7% 10% 2%;
+}
+
+.counter {
+    padding: 5%;
+    margin: 5%;
+    text-align: center;
+    background-color: #6ee4fe;
+    border-radius: 5px;
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.counterUtilities {
+    padding: 5%;
+    margin: 5%;
+    text-align: left;
+    background-color: #6ee4fe;
+    border-radius: 5px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+
+.button-block {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    padding: 3%;
+    margin: 5%;
+    text-align: center;
+    border: 2px solid #6ee4fe;
+    border-radius: 5px;
+}
+
+.button-block-util{
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    padding: 3% 3% 3% 30%;
+    margin: 5%;
+    text-align: center;
+    border: 2px solid #6ee4fe;
+    border-radius: 5px;
+}
+
+
+button {
+
+    display: inline-block;
+    background-color: #6ee4fe;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin: 0 6%;
+    font-weight: bold;
+
+}
+
+button:active {
+    background-color: #2a2d35; /* Green */
+    color: #6ee4fe;
+}
+
+.pastNumber {
+    color: red;
+}
+
+.inputStyle1 {
+    text-align: center;
+    margin: 0 0 0 12%;
+    display: inline-block;
+}
+.inputStyle2 {
+    text-align: center;
+    margin: 0 0 0 12%;
+    display: inline-block;
+}
+
+.errorValue {
+    border: lightcoral 2px solid;
+}
