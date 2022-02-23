@@ -2,6 +2,7 @@ import React from 'react';
 import ButtonBlockForCounter from "./ButtonBlock";
 
 type CounterType = {
+    change: boolean;
     data: number
     setData: (data: number) => void
     disableItem: boolean;
@@ -14,7 +15,8 @@ const Counter: React.FC<CounterType> = (
         data,
         setData,
         disableItem,
-        setDisableItem
+        setDisableItem,
+        change
     }
 ) => {
 
@@ -41,13 +43,15 @@ const Counter: React.FC<CounterType> = (
         console.log(maxNumber);
     };
 
+    let text = disableItem? <div style={{color:"red"}}>Error</div>  :<div>the text is print</div>;
+    console.log(change);
 
     // let pastNumber = data === 5 ? {color: "red"} : {}
     //let counterCN = data === 5 ? "counter pastNumber" : "counter"
 
     return (
         <div>
-            <div>{data}</div>
+            <div>{change ? text : data}</div>
             <ButtonBlockForCounter
                 onClickChangeNum={onClickChangeNum}
                 resetNumber={resetNumber}

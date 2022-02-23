@@ -7,6 +7,7 @@ function App() {
 
     const [data, setData] = useState<number>(0)
     const [disableItem, setDisableItem] = useState(false);
+    const [change, setChange] = useState<boolean>(false);
 
     const onClickLocalStorage = (max: number, min: number) => {
         let a;
@@ -17,7 +18,8 @@ function App() {
                 (a = localStorage.getItem("min")),
                 a ? (b = JSON.parse(a), setData(b)) : null,
                 console.log(max),
-                console.log(min)
+                console.log(min),
+                setChange(false)
         );
     };
 
@@ -26,6 +28,8 @@ function App() {
         <div className="App">
             <div className="CounterBlok">
                 <UtilitiesForCounter
+                    change={change}
+                    setChange={setChange}
                     disableItem={disableItem}
                     setDisableItem={setDisableItem}
                     onClickHandlerListener={onClickLocalStorage}
@@ -35,6 +39,7 @@ function App() {
             </div>
             <div className="UtilitiesBlok">
                 <Counter
+                    change={change}
                     data={data}
                     setData={setData}
                     disableItem={disableItem}
