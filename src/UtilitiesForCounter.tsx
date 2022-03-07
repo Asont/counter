@@ -72,7 +72,8 @@ const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
     let error = props.disableItem ? "errorValue" : "";
 
     return (
-        <div className="counterUtilities">
+        <div >
+            <div className="counterUtilities">
             <div>max value:
                 <input type="number"
                        className={error}
@@ -86,11 +87,14 @@ const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
                        value={minValue}
                        onChange={onChangeMinValue}/>
             </div>
-            <Button
-                title={"set"}
-                disable={props.disableItem}
-                onClickHandler={onClickHandlerListenerForButton}
-            />
+            </div>
+            <div className={"button-block-for-utilities"}>
+                <Button
+                    title={"set"}
+                    disable={props.disableItem}
+                    onClickHandler={onClickHandlerListenerForButton}
+                />
+            </div>
         </div>
     );
 };

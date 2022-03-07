@@ -43,15 +43,15 @@ const Counter: React.FC<CounterType> = (
         console.log(maxNumber);
     };
 
-    let text = disableItem? <div style={{color:"red"}}>Error</div>  :<div>the text is print</div>;
+    let text = disableItem? <div className={"error-text"}>Error</div> : <div className={"print-text"}>the text is print</div>;
     console.log(change);
 
     // let pastNumber = data === 5 ? {color: "red"} : {}
     //let counterCN = data === 5 ? "counter pastNumber" : "counter"
 
     return (
-        <div>
-            <div>{change ? text : data}</div>
+        <div >
+            <div className="counter">{change ? text : data}</div>
             <ButtonBlockForCounter
                 onClickChangeNum={onClickChangeNum}
                 resetNumber={resetNumber}

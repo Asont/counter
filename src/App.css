@@ -37,7 +37,7 @@ body {
     text-align: center;
     background-color: #6ee4fe;
     border-radius: 5px;
-    font-size: 3em;
+    font-size: 3.7em;
     font-weight: bold;
 }
 
@@ -49,6 +49,16 @@ body {
     border-radius: 5px;
     font-size: 0.85em;
     font-weight: bold;
+}
+
+.error-text{
+    font-size: 0.51em;
+    padding: 20px;
+}
+
+.print-text{
+    font-size: 0.51em;
+    padding: 20px;
 }
 
 
@@ -63,6 +73,16 @@ body {
 }
 
 .button-block-util{
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    padding: 3% 3% 3% 30%;
+    margin: 5%;
+    text-align: center;
+    border: 2px solid #6ee4fe;
+    border-radius: 5px;
+}
+
+.button-block-for-utilities{
     display: grid;
     grid-template-columns: 0.8fr 1fr;
     padding: 3% 3% 3% 30%;
