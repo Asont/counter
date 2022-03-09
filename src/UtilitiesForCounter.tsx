@@ -74,18 +74,21 @@ const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
     return (
         <div >
             <div className="counterUtilities">
-            <div>max value:
+                <div><span>max value:</span>
                 <input type="number"
                        className={error}
                        value={maxValue}
                        onChange={onChangeMaxValue}
+                        style={{margin:"4px"}}
                 />
             </div>
-            <div>start value:
+                <div><span>start value:</span>
                 <input type="number"
                        className={error}
                        value={minValue}
-                       onChange={onChangeMinValue}/>
+                       onChange={onChangeMinValue}
+
+                />
             </div>
             </div>
             <div className={"button-block-for-utilities"}>

@@ -38,20 +38,30 @@ const Counter: React.FC<CounterType> = (
         }
         if (data >= startNumber && data <= maxNumber - 1) {
             setData(data + 1);
+
         }
         console.log(startNumber);
         console.log(maxNumber);
     };
 
-    let text = disableItem? <div className={"error-text"}>Error</div> : <div className={"print-text"}>the text is print</div>;
-    console.log(change);
+    let text = disableItem? <span className={"error-text"}>Incorrect value</span> : <span className={"print-text"}>press "set"</span>;
 
-    // let pastNumber = data === 5 ? {color: "red"} : {}
-    //let counterCN = data === 5 ? "counter pastNumber" : "counter"
+    let maxNumber1
+    let getMaxNumber = localStorage.getItem("max")
+    if (getMaxNumber) {
+        maxNumber1 = JSON.parse(getMaxNumber)
+    }
+
+
+let styleForCounter = data ===maxNumber1 ? "counterWithMaxValue"  : "counter"
+
+    if(data ===maxNumber1) {
+        setDisableItem(true)
+    }
 
     return (
-        <div >
-            <div className="counter">{change ? text : data}</div>
+        <div>
+            <div className={styleForCounter}>{change ? text : data}</div>
             <ButtonBlockForCounter
                 onClickChangeNum={onClickChangeNum}
                 resetNumber={resetNumber}

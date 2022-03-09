@@ -26,18 +26,16 @@ function App() {
 
     return (
         <div className="App">
-            <div className="CounterBlok">
+            <div className="CounterBlok" >
                 <UtilitiesForCounter
                     change={change}
                     setChange={setChange}
                     disableItem={disableItem}
                     setDisableItem={setDisableItem}
                     onClickHandlerListener={onClickLocalStorage}
-
                 />
-                {/*<ButtonBlockForUtilities changeNumber={changeNumber} resetNumber={resetNumber} data={1}/>*/}
             </div>
-            <div className="UtilitiesBlok">
+            <div className="UtilitiesBlok" >
                 <Counter
                     change={change}
                     data={data}

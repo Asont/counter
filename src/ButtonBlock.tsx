@@ -15,7 +15,7 @@ const ButtonBlock: React.FC<ButtonBlockType> = ({resetNumber, disable, onClickCh
     return (
         <div className="button-block">
             <Button title={"inc"} onClickHandler={onClickChangeNum} disable={disable}/>
-            <Button title={"reset"} onClickHandler={resetNumber} disable={disable}/>
+            <Button title={"reset"} onClickHandler={resetNumber} disable={false}/>
         </div>
     );
 };
