@@ -5,6 +5,7 @@ import UtilitiesForCounter from "./components/UtilitiesForCounter";
 
 function App() {
     useEffect(() => {
+        debugger
         setMinNumber(JSON.parse(localStorage.getItem("min") || "null"))
         setMaxNumber(JSON.parse(localStorage.getItem("max") || "null"))
     }, [])
