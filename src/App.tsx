@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import './App.css';
 import Counter from "./components/Counter";
 import UtilitiesForCounter from "./components/UtilitiesForCounter";
 
 function App() {
     useEffect(() => {
-        debugger
         setMinNumber(JSON.parse(localStorage.getItem("min") || "null"))
         setMaxNumber(JSON.parse(localStorage.getItem("max") || "null"))
     }, [])
 
     const [disableItem, setDisableItem] = useState(false);
     const [change, setChange] = useState<boolean>(false);
+    const [error, setError] = useState<string>('')
     const [minNumber, setMinNumber] = useState<number>(0);
     const [maxNumber, setMaxNumber] = useState<number>(5);
     const [data, setData] = useState<number>(minNumber)
@@ -19,14 +19,25 @@ function App() {
     const isMinNumber = data === minNumber
 
     const onClickLocalStorage = (max: number, min: number) => {
-        debugger
         localStorage.setItem("min", JSON.stringify(min))
         localStorage.setItem("max", JSON.stringify(max))
         setMinNumber(min)
         setMaxNumber(max)
         setChange(false)
+        setData(min)
     };
 
+    const onChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
+        setChange(true)
+        setMaxNumber(parseInt(e.currentTarget.value));
+        isMaxNumber ? setError("error value") : setError('');
+    };
+
+    const onChangeMinValue = (e: ChangeEvent<HTMLInputElement>) => {
+        setChange(true)
+        setMinNumber(parseInt(e.currentTarget.value));
+        isMinNumber ? setError("error value") : setError('');
+    };
 
     return (
         <div className="App">
@@ -39,10 +50,12 @@ function App() {
                     maxNumber={maxNumber}
                     setMaxNumber={setMaxNumber}
                     change={change}
-                    setChange={setChange}
                     disableItem={disableItem}
                     setDisableItem={setDisableItem}
                     onClickLocalStorage={onClickLocalStorage}
+                    onChangeMaxValue={onChangeMaxValue}
+                    onChangeMinValue={onChangeMinValue}
+error = {error}
                 />
             </div>
             <div className="UtilitiesBlok">
@@ -55,6 +68,7 @@ function App() {
                     setData={setData}
                     disableItem={disableItem}
                     setDisableItem={setDisableItem}
+                    error={error}
                 />
 
             </div>

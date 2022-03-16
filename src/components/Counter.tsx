@@ -10,6 +10,7 @@ type CounterType = {
     disableItem: boolean;
     setDisableItem: (disableItem: boolean) => void;
     isMaxNumber:boolean
+    error: string
 }
 
 
@@ -22,13 +23,14 @@ const Counter: React.FC<CounterType> = (
         change,
         startNumber,
         maxNumber,
-        isMaxNumber
+        isMaxNumber,
+        error
     }
 ) => {
 
 
     const resetNumber = () => {
-        setData(data)
+        setData(startNumber)
     }
 
     const onClickChangeNum = () => {
@@ -37,7 +39,7 @@ const Counter: React.FC<CounterType> = (
         }
     };
 
-    let text = disableItem ? <span className={"error-text"}>Incorrect value</span> :
+    let text = error ? <span className={"error-text"}>Incorrect value</span> :
         <span className={"print-text"}>press "set"</span>;
 
 
@@ -45,7 +47,6 @@ const Counter: React.FC<CounterType> = (
 
     let styleForCounter = isMaxNumber ? "counterWithMaxValue" : "counter"
     isMaxNumber && setDisableItem(true)
-
 
     return (
         <div>

@@ -1,10 +1,9 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useEffect} from 'react';
 import Button from "./Button";
 
 
 type UtilitiesForCounterType = {
     change: boolean;
-    setChange: (change: boolean) => void;
     disableItem: boolean;
     setDisableItem: (disableItem: boolean) => void;
     onClickLocalStorage: (max: number, min: number) => void;
@@ -13,57 +12,45 @@ type UtilitiesForCounterType = {
     setMinNumber: (startNumber: number) => void
     maxNumber: number
     setMaxNumber: (maxNumber: number) => void
-    isMinNumber:boolean
+    isMinNumber: boolean
+    onChangeMinValue: (e: ChangeEvent<HTMLInputElement>) => void
+    onChangeMaxValue: (e: ChangeEvent<HTMLInputElement>) => void
+    error: string
 }
-
-
 const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
-
-
-    const onChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setMaxNumber(parseInt(e.currentTarget.value));
-        props.isMaxNumber ? props.setChange(true) : props.setChange(!props.change);
-    };
-
-    const onChangeMinValue = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setMinNumber(parseInt(e.currentTarget.value));
-        console.log(props.startNumber)
-        props.isMinNumber? props.setChange(true): props.setChange(!props.change);
-    };
-
     const onClickHandlerListenerForButton = () => {
         props.onClickLocalStorage(props.maxNumber, props.startNumber);
     };
+    useEffect(() => {
+        if (
+            props.maxNumber < 0 ||
+            props.startNumber < 0 ||
+            props.maxNumber < props.startNumber ||
+            props.startNumber > props.maxNumber ||
+            props.startNumber === props.maxNumber
+        ) {
+            props.setDisableItem(true);
+        } else props.setDisableItem(false);
+    },)
 
-    if (
-        props.maxNumber < 0 ||
-        props.startNumber < 0 ||
-        props.maxNumber < props.startNumber ||
-        props.startNumber > props.maxNumber ||
-        props.startNumber === props.maxNumber
-    ) {
-        props.setDisableItem(true);
-    } else props.setDisableItem(false);
 
-
-    let error = props.disableItem ? "errorValue" : "";
 
     return (
         <div>
             <div className="counterUtilities">
                 <div><span>max value:</span>
                     <input type="number"
-                           className={error}
+                           className={props.error}
                            value={props.maxNumber}
-                           onChange={onChangeMaxValue}
+                           onChange={props.onChangeMaxValue}
                            style={{margin: "4px"}}
                     />
                 </div>
                 <div><span>start value:</span>
                     <input type="number"
-                           className={error}
+                           className={props.error}
                            value={props.startNumber}
-                           onChange={onChangeMinValue}
+                           onChange={props.onChangeMinValue}
 
                     />
                 </div>
