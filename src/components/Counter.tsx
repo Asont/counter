@@ -9,7 +9,7 @@ type CounterType = {
     setData: (data: number) => void
     disableItem: boolean;
     setDisableItem: (disableItem: boolean) => void;
-    isMaxNumber:boolean
+    isMaxNumber: boolean
     error: string
 }
 
@@ -28,8 +28,7 @@ const Counter: React.FC<CounterType> = (
     }
 ) => {
 
-
-    const resetNumber = () => {
+    const resetNumber =  () => {
         setData(startNumber)
     }
 
