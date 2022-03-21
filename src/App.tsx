@@ -12,6 +12,7 @@ function App() {
     const [disableItem, setDisableItem] = useState(false);
     const [change, setChange] = useState<boolean>(false);
     const [error, setError] = useState<string>('')
+    const [isError, setIsError] = useState<boolean>(false)
     const [minNumber, setMinNumber] = useState<number>(0);
     const [maxNumber, setMaxNumber] = useState<number>(5);
     const [data, setData] = useState<number>(minNumber)
@@ -50,6 +51,8 @@ function App() {
                     maxNumber={maxNumber}
                     setMaxNumber={setMaxNumber}
                     change={change}
+                    isError={isError}
+                    setIsError={setIsError}
                     disableItem={disableItem}
                     setDisableItem={setDisableItem}
                     onClickLocalStorage={onClickLocalStorage}
@@ -60,6 +63,7 @@ error = {error}
             </div>
             <div className="UtilitiesBlok">
                 <Counter
+                    isError={isError}
                     maxNumber={maxNumber}
                     isMaxNumber={isMaxNumber}
                     startNumber={minNumber}

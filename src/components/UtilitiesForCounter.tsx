@@ -16,6 +16,8 @@ type UtilitiesForCounterType = {
     onChangeMinValue: (e: ChangeEvent<HTMLInputElement>) => void
     onChangeMaxValue: (e: ChangeEvent<HTMLInputElement>) => void
     error: string
+    isError:boolean
+    setIsError:(isError:boolean)=>void
 }
 const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
     const onClickHandlerListenerForButton = () => {
@@ -30,8 +32,10 @@ const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
             props.startNumber === props.maxNumber
         ) {
             props.setDisableItem(true);
-        } else props.setDisableItem(false);
-    },)
+            props.setIsError(true)
+        } else {props.setDisableItem(false)
+            props.setIsError(false)}
+    },[props.maxNumber, props.startNumber])
 
 
 
