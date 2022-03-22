@@ -1,42 +1,39 @@
-import React, {ChangeEvent, useEffect} from 'react';
+import React, {ChangeEvent, memo, useCallback, useEffect} from 'react';
 import Button from "./Button";
 
 
 type UtilitiesForCounterType = {
     change: boolean;
     disableItem: boolean;
-    setDisableItem: (disableItem: boolean) => void;
     onClickLocalStorage: (max: number, min: number) => void;
-    isMaxNumber: boolean
     startNumber: number
-    setMinNumber: (startNumber: number) => void
     maxNumber: number
-    setMaxNumber: (maxNumber: number) => void
-    isMinNumber: boolean
     onChangeMinValue: (e: ChangeEvent<HTMLInputElement>) => void
     onChangeMaxValue: (e: ChangeEvent<HTMLInputElement>) => void
     error: string
-    isError:boolean
-    setIsError:(isError:boolean)=>void
+    isError: boolean
 }
-const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
-    const onClickHandlerListenerForButton = () => {
+const UtilitiesForCounter = memo((props: UtilitiesForCounterType) => {
+
+
+    const onClickHandlerListenerForButton = useCallback(() => {
         props.onClickLocalStorage(props.maxNumber, props.startNumber);
-    };
-    useEffect(() => {
+        debugger
+    },[]);
+
+ /*   useEffect(() => {
         if (
             props.maxNumber < 0 ||
             props.startNumber < 0 ||
             props.maxNumber < props.startNumber ||
             props.startNumber > props.maxNumber ||
             props.startNumber === props.maxNumber
-        ) {
-            props.setDisableItem(true);
-            props.setIsError(true)
-        } else {props.setDisableItem(false)
-            props.setIsError(false)}
-    },[props.maxNumber, props.startNumber])
-
+        ) { return props.disableItem = true }
+        else {
+            props.disableItem = false
+            props.isError = false
+        }
+    }, [])*/
 
 
     return (
@@ -68,6 +65,6 @@ const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
             </div>
         </div>
     );
-};
+});
 
 export default UtilitiesForCounter;
