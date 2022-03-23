@@ -1,4 +1,4 @@
-import React, {ChangeEvent, Dispatch,useEffect} from 'react';
+import React, {ChangeEvent, Dispatch, memo, useCallback, useEffect} from 'react';
 import Button from "./Button";
 import {changeDisableItem, setError} from "../state/app-reducer";
 import '../App.css';
@@ -18,13 +18,12 @@ type UtilitiesForCounterType = {
     dispatch:Dispatch<any>
     isMaxNumber:boolean
 }
-const UtilitiesForCounter =(props: UtilitiesForCounterType) => {
+const UtilitiesForCounter = memo((props: UtilitiesForCounterType) => {
+    console.log("UtilitiesForCounter")
 
-
-    const onClickHandlerListenerForButton = () => {
+    const onClickHandlerListenerForButton = useCallback(() => {
         props.onClickLocalStorage(props.maxNumber, props.startNumber);
-        debugger
-    };
+    },[]);
 
 
     useEffect(() => {
@@ -40,7 +39,7 @@ const UtilitiesForCounter =(props: UtilitiesForCounterType) => {
         } else  props.dispatch(changeDisableItem(false))
         props.dispatch(setError(false))
     },[props.maxNumber, props.startNumber])
-debugger
+
 
 
 let errorForInput = props.disableItem?"errorValue":""
@@ -75,6 +74,6 @@ let errorForInput = props.disableItem?"errorValue":""
             </div>
         </div>
     );
-};
+});
 
 export default UtilitiesForCounter;

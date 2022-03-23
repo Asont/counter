@@ -50,14 +50,13 @@ export const appReducer = (state:StateAppType=initialState, action:any)=>{
 
 
 export const setLocalStorage = (max: number, min: number)=>{
-    debugger
     return {
         type:"SET-LOCAL-STORAGE",
         payload:{
             max,
             min
         }
-    }
+    } as const
 }
 export const setMaxValue = (max:number) =>{
     return {
@@ -65,7 +64,7 @@ export const setMaxValue = (max:number) =>{
         payload:{
             max,
         }
-    }
+    }  as const
 }
 export const setMinValue = (min:number) =>{
     return {
@@ -73,7 +72,7 @@ export const setMinValue = (min:number) =>{
         payload:{
             min,
         }
-    }
+    } as const
 }
 
 export const resetCounter = (minNumber:number) =>{
@@ -82,37 +81,33 @@ export const resetCounter = (minNumber:number) =>{
         pyload:{
             minNumber
         }
-    }
+    } as const
 }
 export const changeData = (changeNum:number) =>{
-    debugger
     return {
         type:"CHANGE-DATA",
         payload:{
             changeNum
         }
-    }
+    } as const
 }
 export const changeDisableItem = (disableItem:boolean) =>{
-    debugger
     return {
         type:"CHANGE-DISABLE-ITEM",
         payload:{
             disableItem
         }
-    }
+    } as const
 }
 export const changeChange = (change:boolean) =>{
-    debugger
     return {
         type:"CHANGE-CHANGE",
         payload:{
             change
         }
-    }
+    } as const
 }
 export const setError = (isError:boolean) =>{
-    debugger
     return {
         type:"SET-ERROR",
         payload:{
