@@ -33,26 +33,24 @@ export const appReducer = (state:StateAppType=initialState, action:any)=>{
             state.isMaxNumber ? state.error="error value" : state.error='';
             return {...state, setChange:true, maxNumber:action.payload.max}
         case "SET-MIN-VALUE":
-            state.isMinNumber = state.data === state.minNumber
-            state.isMinNumber ? state.error="error value" : state.error='';
             return {...state, setChange:true, minNumber:action.payload.min}
         case"RESET-COUNTER":
             return {...state, data:state.minNumber, disableItem:false}
         case "CHANGE-DATA":
-            if (
-                state.maxNumber < 0 ||
-                state.minNumber < 0 ||
-                state.maxNumber < state.minNumber ||
-                state.minNumber > state.maxNumber ||
-                state.minNumber === state.maxNumber
-            ) return {...state, isError:true, disableItem:true}
-            else return {...state, data:action.payload.changeNum}
+         return {...state, data:action.payload.changeNum}
+        case "CHANGE-DISABLE-ITEM":
+            return {...state, disableItem:action.payload.disableItem}
+        case "CHANGE-CHANGE":
+            return {...state, change:action.payload.change}
+        case "SET-ERROR":
+            return {...state, isError:action.payload.isError}
         default:return {...state, data:state.minNumber}
     }
 }
 
 
 export const setLocalStorage = (max: number, min: number)=>{
+    debugger
     return {
         type:"SET-LOCAL-STORAGE",
         payload:{
@@ -92,6 +90,33 @@ export const changeData = (changeNum:number) =>{
         type:"CHANGE-DATA",
         payload:{
             changeNum
+        }
+    }
+}
+export const changeDisableItem = (disableItem:boolean) =>{
+    debugger
+    return {
+        type:"CHANGE-DISABLE-ITEM",
+        payload:{
+            disableItem
+        }
+    }
+}
+export const changeChange = (change:boolean) =>{
+    debugger
+    return {
+        type:"CHANGE-CHANGE",
+        payload:{
+            change
+        }
+    }
+}
+export const setError = (isError:boolean) =>{
+    debugger
+    return {
+        type:"SET-ERROR",
+        payload:{
+            isError
         }
     }
 }

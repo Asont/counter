@@ -3,14 +3,11 @@ import './App.css';
 import Counter from "./components/Counter";
 import UtilitiesForCounter from "./components/UtilitiesForCounter";
 import {useDispatch, useSelector} from "react-redux";
-import {setLocalStorage, setMaxValue, setMinValue, StateAppType} from "./state/app-reducer";
+import {changeChange, setLocalStorage, setMaxValue, setMinValue, StateAppType} from "./state/app-reducer";
 import {AppRootStateType} from "./state/store";
 
 function App() {
-    // @ts-ignore
-    debugger
-    const state1 = useSelector<AppRootStateType, StateAppType>(state=>state.appReducer)
-    const dispatch = useDispatch()
+
 
     useEffect(() => {
         // @ts-ignore
@@ -18,13 +15,15 @@ function App() {
         state1.minNumber = (JSON.parse(localStorage.getItem("min") || "null"))
         // @ts-ignore
         state1.maxNumber = (JSON.parse(localStorage.getItem("max") || "null"))
+
     }, [])
 
+    // @ts-ignore
+
+    const state1 = useSelector<AppRootStateType, StateAppType>(state=>state.appReducer)
+    const dispatch = useDispatch()
 
 
-
-    /* state1.isMaxNumber = state1.data === state1.maxNumber && state1.maxNumber < 0 && state1.maxNumber < state1.minNumber
-    state1.isMinNumber = state1.data === state1.minNumber*/
 
     const onClickLocalStorage = (max: number, min: number) => {
         debugger
@@ -36,19 +35,25 @@ function App() {
 
     const onChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         let tempMaxNumber = parseInt(e.currentTarget.value)
+        state1.isMaxNumber = state1.data===tempMaxNumber
+        state1.isMaxNumber? dispatch(changeChange(false)):dispatch(changeChange(true))
         dispatch(setMaxValue(tempMaxNumber))
+
     }
 
 
     const onChangeMinValue = (e: ChangeEvent<HTMLInputElement>) => {
         let tempMinNumber = parseInt(e.currentTarget.value)
+        state1.isMinNumber = state1.data===tempMinNumber
+        state1.isMinNumber? dispatch(changeChange(false)):dispatch(changeChange(true))
         dispatch(setMinValue(tempMinNumber))
-    };
+    }
 
     return (
         <div className="App">
             <div className="CounterBlok">
                 <UtilitiesForCounter
+                    isMinNumber={state1.isMinNumber}
                     startNumber={state1.minNumber}
                     maxNumber={state1.maxNumber}
                     change={state1.change}
@@ -58,6 +63,8 @@ function App() {
                     onChangeMaxValue={onChangeMaxValue}
                     onChangeMinValue={onChangeMinValue}
                     error = {state1.error}
+                    dispatch={dispatch}
+                    isMaxNumber={state1.isMaxNumber}
                 />
             </div>
             <div className="UtilitiesBlok">

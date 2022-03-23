@@ -1,4 +1,4 @@
-import React, {Dispatch, useState} from 'react';
+import React, {Dispatch, memo, useCallback, useState} from 'react';
 import Button from "./Button";
 
 import {changeData, resetCounter} from "../state/app-reducer";
@@ -39,17 +39,18 @@ const Counter: React.FC<CounterType> = (
             return  dispatch(changeData(++data))
         }
     };
-    let text = isError ? <span className={"error-text"}>Incorrect value</span> :
+    debugger
+    let text = disableItem ? <span className={"error-text"}>Incorrect value</span> :
         <span className={"print-text"}>press "set"</span>;
 
-    let styleForCounter = isMaxNumber ? "counterWithMaxValue" : "counter"
+    let styleForCounter = maxNumber===data ? "counterWithMaxValue" : "counter"
 
 
     return (
         <div>
             <div className={styleForCounter}>{change ? text : data}</div>
             <div className="button-block">
-                <Button title={"inc"} onClickHandler={onClickChangeNum} disable={disableItem}/>
+                <Button title={"inc"} onClickHandler={onClickChangeNum} disable={disableItem||maxNumber===data}/>
                 <Button title={"reset"} onClickHandler={resetNumber} disable={false}/>
             </div>
         </div>
