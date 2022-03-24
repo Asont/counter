@@ -14,11 +14,8 @@ const App= memo(()=> {
         state1.maxNumber = (JSON.parse(localStorage.getItem("max") || "null"))
     }, [])
 
-
     const state1 = useSelector<AppRootStateType, StateAppType>(state=>state.appReducer)
     const dispatch = useDispatch()
-
-
 
     const onClickLocalStorage = useCallback((max: number, min: number) => {
         localStorage.setItem("min", JSON.stringify(min))
@@ -33,7 +30,6 @@ const App= memo(()=> {
         dispatch(setMaxValue(tempMaxNumber))
 
     },[dispatch])
-
 
     const onChangeMinValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         let tempMinNumber = parseInt(e.currentTarget.value)
