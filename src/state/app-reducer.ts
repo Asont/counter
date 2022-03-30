@@ -22,11 +22,13 @@ let initialState ={
     isMaxNumber:false,
     isMinNumber:false,
 }
-export type ActionType = SetLocalStorageType | SetMaxValue | SetMinValue | ResetCounter |ChangeData
+export type ActionType = SetLocalStorageType | SetMaxValue | SetMinValue | ResetCounter |ChangeData |
+    ChangeDisableItemType | ChangeChangeType | SetErrorType
 
 export const appReducer = (state:StateAppType=initialState, action:any)=>{
     switch(action.type){
         case "SET-LOCAL-STORAGE":
+            debugger
         return {...state, minNumber:action.payload.min, maxNumber:action.payload.max, change:false, data:action.payload.min}
         case "SET-MAX-VALUE":
             state.isMaxNumber = state.data === state.maxNumber
@@ -50,6 +52,7 @@ export const appReducer = (state:StateAppType=initialState, action:any)=>{
 
 
 export const setLocalStorage = (max: number, min: number)=>{
+    debugger
     return {
         type:"SET-LOCAL-STORAGE",
         payload:{
@@ -74,7 +77,6 @@ export const setMinValue = (min:number) =>{
         }
     } as const
 }
-
 export const resetCounter = (minNumber:number) =>{
     return {
         type:"RESET-COUNTER",
@@ -121,3 +123,6 @@ type SetMaxValue = ReturnType<typeof setMaxValue>
 type ResetCounter = ReturnType<typeof resetCounter>
 type SetMinValue = ReturnType<typeof setMinValue>
 type SetLocalStorageType = ReturnType<typeof setLocalStorage>
+type ChangeDisableItemType = ReturnType<typeof changeDisableItem>
+type ChangeChangeType = ReturnType<typeof changeChange>
+type SetErrorType = ReturnType<typeof setError>

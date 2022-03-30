@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {changeChange, setLocalStorage, setMaxValue, setMinValue, StateAppType} from "./state/app-reducer";
 import {AppRootStateType} from "./state/store";
 
-const App= memo(()=> {
+const App= ()=> {
     console.log("App")
 
     useEffect(() => {
@@ -17,26 +17,27 @@ const App= memo(()=> {
     const state1 = useSelector<AppRootStateType, StateAppType>(state=>state.appReducer)
     const dispatch = useDispatch()
 
-    const onClickLocalStorage = useCallback((max: number, min: number) => {
+    const onClickLocalStorage = (max: number, min: number) => {
+        debugger
         localStorage.setItem("min", JSON.stringify(min))
         localStorage.setItem("max", JSON.stringify(max))
         dispatch(setLocalStorage(max, min))
-    },[]);
+    }
 
-    const onChangeMaxValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const onChangeMaxValue = (e: ChangeEvent<HTMLInputElement>) => {
         let tempMaxNumber = parseInt(e.currentTarget.value)
         state1.isMaxNumber = state1.data===tempMaxNumber
         state1.isMaxNumber? dispatch(changeChange(false)):dispatch(changeChange(true))
         dispatch(setMaxValue(tempMaxNumber))
 
-    },[dispatch])
+    }
 
-    const onChangeMinValue = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const onChangeMinValue = (e: ChangeEvent<HTMLInputElement>) => {
         let tempMinNumber = parseInt(e.currentTarget.value)
         state1.isMinNumber = state1.data===tempMinNumber
         state1.isMinNumber? dispatch(changeChange(false)):dispatch(changeChange(true))
         dispatch(setMinValue(tempMinNumber))
-    },[dispatch])
+    }
 
     return (
         <div className="App">
@@ -71,6 +72,6 @@ const App= memo(()=> {
             </div>
         </div>
     );
-})
+}
 
 export default App;

@@ -17,7 +17,7 @@ type CounterType = {
 }
 
 
-const Counter: React.FC<CounterType> = memo((
+const Counter: React.FC<CounterType> =(
     {
         data,
         disableItem,
@@ -28,15 +28,15 @@ const Counter: React.FC<CounterType> = memo((
     }
 ) => {
     console.log("Counter")
-    const resetNumber = useCallback(() => {
+    const resetNumber =() => {
         dispatch(resetCounter(startNumber))
-    },[dispatch])
+    }
 
-    const onClickChangeNum = useCallback(() => {
+    const onClickChangeNum = () => {
         if (data >= startNumber && data <= maxNumber - 1) {
             return dispatch(changeData(++data))
         }
-    },[dispatch]);
+    }
 
     let text = disableItem ? <span className={"error-text"}>Incorrect value</span> :
         <span className={"print-text"}>press "set"</span>;
@@ -52,6 +52,6 @@ const Counter: React.FC<CounterType> = memo((
             </div>
         </div>
     );
-});
+};
 
 export default Counter;

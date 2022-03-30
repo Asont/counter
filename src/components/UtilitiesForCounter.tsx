@@ -18,13 +18,13 @@ type UtilitiesForCounterType = {
     dispatch:Dispatch<any>
     isMaxNumber:boolean
 }
-const UtilitiesForCounter = memo((props: UtilitiesForCounterType) => {
+const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
     console.log("UtilitiesForCounter")
 
-    const onClickHandlerListenerForButton = useCallback(() => {
+    const onClickHandlerListenerForButton = () => {
+        debugger
         props.onClickLocalStorage(props.maxNumber, props.startNumber);
-    },[]);
-
+    }
 
     useEffect(() => {
         if (
@@ -41,9 +41,7 @@ const UtilitiesForCounter = memo((props: UtilitiesForCounterType) => {
     },[props.maxNumber, props.startNumber])
 
 
-
 let errorForInput = props.disableItem?"errorValue":""
-
 
     return (
         <div>
@@ -74,6 +72,6 @@ let errorForInput = props.disableItem?"errorValue":""
             </div>
         </div>
     );
-});
+};
 
 export default UtilitiesForCounter;
