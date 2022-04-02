@@ -4,7 +4,6 @@ import React, {Dispatch, memo, useCallback} from 'react';
 import {changeData, resetCounter} from "../state/app-reducer";
 import Button from "./Button";
 
-
 type CounterType = {
     maxNumber: number;
     startNumber: number;
@@ -15,7 +14,6 @@ type CounterType = {
     isError: boolean
     dispatch: Dispatch<any>
 }
-
 
 const Counter: React.FC<CounterType> =(
     {
