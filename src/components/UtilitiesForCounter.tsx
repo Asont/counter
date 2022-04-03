@@ -40,7 +40,6 @@ const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
         props.dispatch(setError(false))
     },[props.maxNumber, props.startNumber])
 
-
 let errorForInput = props.disableItem?"errorValue":""
 
     return (
