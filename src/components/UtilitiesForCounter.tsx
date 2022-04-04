@@ -58,7 +58,6 @@ let errorForInput = props.disableItem?"errorValue":""
                            className={errorForInput}
                            value={props.startNumber}
                            onChange={props.onChangeMinValue}
-
                     />
                 </div>
             </div>
