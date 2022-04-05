@@ -6,11 +6,11 @@ body {
     display: flex;
     flex-direction: initial;
     align-content: flex-start;
-    color:#6ee4fe;
+    color: #6ee4fe;
 
 }
 
-.CounterBlok  {
+.CounterBlok {
     width: 300px;
     height: 200px;
     text-align: center;
@@ -21,7 +21,7 @@ body {
     margin: 15% 7% 10% 23%;
 }
 
-.UtilitiesBlok  {
+.UtilitiesBlok {
     width: 300px;
     height: 200px;
     text-align: center;
@@ -29,7 +29,7 @@ body {
     border-radius: 10px;
     display: flow-root;
     align-self: center;
-    margin:15% 7% 10% 2%;
+    margin: 15% 7% 10% 2%;
 }
 
 .counter {
@@ -45,7 +45,7 @@ body {
 
 .counterWithMaxValue {
     height: 80px;
-    color:red;
+    color: red;
     padding: 5%;
     margin: 5%;
     text-align: center;
@@ -66,14 +66,14 @@ body {
     font-weight: bold;
 }
 
-.error-text{
+.error-text {
     font-size: 50%;
-    color:red;
+    color: red;
     padding-left: 30px;
 }
 
-.print-text{
- font-size: 30px;
+.print-text {
+    font-size: 30px;
     padding-left: 35px;
 }
 
@@ -88,7 +88,7 @@ body {
     border-radius: 5px;
 }
 
-.button-block-util{
+.button-block-util {
     display: grid;
     grid-template-columns: 0.8fr 1fr;
     padding: 3% 3% 3% 30%;
@@ -98,7 +98,7 @@ body {
     border-radius: 5px;
 }
 
-.button-block-for-utilities{
+.button-block-for-utilities {
     display: grid;
     grid-template-columns: 0.8fr 1fr;
     padding: 3% 3% 3% 30%;
@@ -131,29 +131,30 @@ button:active {
 }
 
 div span {
-    font-size:20px;
+    font-size: 20px;
     margin-right: 36px;
     margin-bottom: 20px;
-    display:inline-block;
+    display: inline-block;
 
 }
 
 div input {
-   border:2px solid #6ee4fe;
+    border: 2px solid #6ee4fe;
     border-radius: 3px;
-    display:inline-block;
+    display: inline-block;
     text-align: center;
-    width:70px;
+    width: 70px;
 }
 
 .inputStyle1 {
-    border:1px solid #6ee4fe;
+    border: 1px solid #6ee4fe;
     text-align: center;
     margin: 0 0 0 12%;
     display: inline-block;
 }
+
 .inputStyle2 {
-    border:1px solid #6ee4fe;
+    border: 1px solid #6ee4fe;
     text-align: center;
     margin: 0 0 0 12%;
     display: inline-block;
