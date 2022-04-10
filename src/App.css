@@ -117,7 +117,6 @@ button {
     margin: 0 6%;
     font-weight: bold;
 }
-
 button:active {
     background-color: #2a2d35; /* Green */
     color: #6ee4fe;
