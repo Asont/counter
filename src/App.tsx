@@ -1,4 +1,4 @@
-import React, {ChangeEvent, memo, useCallback, useEffect} from 'react';
+import React, {ChangeEvent, useEffect} from 'react';
 import './App.css';
 import Counter from "./components/Counter";
 import UtilitiesForCounter from "./components/UtilitiesForCounter";
@@ -7,15 +7,17 @@ import {changeChange, setLocalStorage, setMaxValue, setMinValue, StateAppType} f
 import {AppRootStateType} from "./state/store";
 
 const App= ()=> {
-    console.log("App")
+
+    const state1 = useSelector<AppRootStateType, StateAppType>(state=>state.appReducer)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         state1.minNumber = (JSON.parse(localStorage.getItem("min") || "null"))
         state1.maxNumber = (JSON.parse(localStorage.getItem("max") || "null"))
+        dispatch(setLocalStorage(state1.maxNumber, state1.minNumber))
     }, [])
 
-    const state1 = useSelector<AppRootStateType, StateAppType>(state=>state.appReducer)
-    const dispatch = useDispatch()
+
 
     const onClickLocalStorage = (max: number, min: number) => {
         debugger

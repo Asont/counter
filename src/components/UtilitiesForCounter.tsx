@@ -2,10 +2,11 @@ import React, {ChangeEvent, Dispatch, memo, useCallback, useEffect} from 'react'
 import Button from "./Button";
 import {changeDisableItem, setError} from "../state/app-reducer";
 import '../App.css';
+import Input from './Input';
 
 
 type UtilitiesForCounterType = {
-    isMinNumber:boolean
+    isMinNumber: boolean
     change: boolean;
     disableItem: boolean;
     onClickLocalStorage: (max: number, min: number) => void;
@@ -15,8 +16,8 @@ type UtilitiesForCounterType = {
     onChangeMaxValue: (e: ChangeEvent<HTMLInputElement>) => void
     error: string
     isError: boolean
-    dispatch:Dispatch<any>
-    isMaxNumber:boolean
+    dispatch: Dispatch<any>
+    isMaxNumber: boolean
 }
 const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
     console.log("UtilitiesForCounter")
@@ -36,29 +37,39 @@ const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
         ) {
             props.dispatch(changeDisableItem(true))
             props.dispatch(setError(true))
-        } else  props.dispatch(changeDisableItem(false))
+        } else props.dispatch(changeDisableItem(false))
         props.dispatch(setError(false))
-    },[props.maxNumber, props.startNumber])
+    }, [props.maxNumber, props.startNumber])
 
-let errorForInput = props.disableItem?"errorValue":""
+    let errorForInput = props.disableItem ? "errorValue" : ""
 
     return (
         <div>
             <div className="counterUtilities">
                 <div><span>max value:</span>
-                    <input type="number"
+                    <Input maxMinNumber={props.maxNumber}
+                           disableItem={props.disableItem}
+                           onChangeMaxValue={props.onChangeMaxValue}
+                           style={{margin: "4px"}}
+                    />
+                    {/*  <input type="number"
                            className={errorForInput}
                            value={props.maxNumber}
                            onChange={props.onChangeMaxValue}
                            style={{margin: "4px"}}
-                    />
+                    />*/}
                 </div>
                 <div><span>start value:</span>
-                    <input type="number"
+                    <Input maxMinNumber={props.startNumber}
+                           onChangeMaxValue={props.onChangeMinValue}
+                           disableItem={props.disableItem}
+                           style={{}}
+                    />
+                    {/*  <input type="number"
                            className={errorForInput}
                            value={props.startNumber}
                            onChange={props.onChangeMinValue}
-                    />
+                    />*/}
                 </div>
             </div>
             <div className={"button-block-for-utilities"}>
