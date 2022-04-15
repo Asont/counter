@@ -52,12 +52,6 @@ const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
                            onChangeMaxValue={props.onChangeMaxValue}
                            style={{margin: "4px"}}
                     />
-                    {/*  <input type="number"
-                           className={errorForInput}
-                           value={props.maxNumber}
-                           onChange={props.onChangeMaxValue}
-                           style={{margin: "4px"}}
-                    />*/}
                 </div>
                 <div><span>start value:</span>
                     <Input maxMinNumber={props.startNumber}

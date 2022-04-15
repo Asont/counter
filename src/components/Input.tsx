@@ -4,7 +4,7 @@ type InputType = {
     maxMinNumber: number,
     onChangeMaxValue: (e: ChangeEvent<HTMLInputElement>) => void,
     disableItem: boolean,
-    style:{}
+    style: {}
 }
 
 const Input = (props: InputType) => {
