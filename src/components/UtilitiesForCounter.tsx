@@ -59,11 +59,6 @@ const UtilitiesForCounter = (props: UtilitiesForCounterType) => {
                            disableItem={props.disableItem}
                            style={{}}
                     />
-                    {/*  <input type="number"
-                           className={errorForInput}
-                           value={props.startNumber}
-                           onChange={props.onChangeMinValue}
-                    />*/}
                 </div>
             </div>
             <div className={"button-block-for-utilities"}>
