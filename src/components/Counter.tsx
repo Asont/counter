@@ -1,4 +1,4 @@
-import React, {Dispatch, memo, useCallback} from 'react';
+import React, {Dispatch} from 'react';
 
 
 import {changeData, resetCounter} from "../state/app-reducer";
