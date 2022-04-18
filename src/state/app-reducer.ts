@@ -50,7 +50,6 @@ export const appReducer = (state:StateAppType=initialState, action:any)=>{
     }
 }
 
-
 export const setLocalStorage = (max: number, min: number)=>{
     return {
         type:"SET-LOCAL-STORAGE",
