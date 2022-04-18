@@ -17,8 +17,6 @@ const App= ()=> {
         dispatch(setLocalStorage(state1.maxNumber, state1.minNumber))
     }, [])
 
-
-
     const onClickLocalStorage = (max: number, min: number) => {
         debugger
         localStorage.setItem("min", JSON.stringify(min))
